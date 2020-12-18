@@ -1,18 +1,12 @@
 ---
 
-dependencies:
-
-  - role: devoinc.secret
-
-  - role: devoinc.ansible_plugins
-
 galaxy_info:
 
   role_name: 'sshd'
-  author: 'Maciej Delmanowski'
+  author: 'Fran Rodríguez'
   description: 'Configure OpenSSH server'
-  company: 'DebOps'
-  license: 'GPL-3.0'
+  company: 'Devo Inc.'
+  license: 'MIT'
   min_ansible_version: '2.2.0'
   platforms:
     - name: Ubuntu
@@ -30,3 +24,8 @@ galaxy_info:
     - ssh
     - sshd
     - openssh
+
+dependencies:
+  - role: devoinc.secret
+  - role: devoinc.ansible_plugins
+
