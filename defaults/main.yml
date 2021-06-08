@@ -201,7 +201,7 @@ sshd__log_level: 'INFO'
 #
 # Specify if access to ``root`` account should be granted. By default ``root``
 # can be accessed only using SSH public keys.
-sshd__permit_root_login: 'without-password'
+sshd__permit_root_login: 'no'
 
                                                                    # ]]]
 # .. envvar:: sshd__password_authentication [[[
