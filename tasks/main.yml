@@ -109,7 +109,7 @@
     dest:   '/etc/ssh/sshd_config'
     owner:  'root'
     group:  'root'
-    mode:   '0644'
+    mode:   '0600'
   notify: [ 'Test sshd configuration and restart' ]
   tags: [ 'role::sshd:config' ]
 
