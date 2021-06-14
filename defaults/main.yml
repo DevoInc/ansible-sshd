@@ -188,7 +188,7 @@ sshd__host_keys: [ 'ed25519', 'rsa', 'ecdsa' ]
 # .. envvar:: sshd__banner [[[
 #
 # Path to file which should be displayed before user authentication.
-sshd__banner: 'none'
+sshd__banner: '/etc/issue.net'
 
                                                                    # ]]]
 # .. envvar:: sshd__log_level [[[
@@ -201,7 +201,7 @@ sshd__log_level: 'INFO'
 #
 # Specify if access to ``root`` account should be granted. By default ``root``
 # can be accessed only using SSH public keys.
-sshd__permit_root_login: 'without-password'
+sshd__permit_root_login: 'no'
 
                                                                    # ]]]
 # .. envvar:: sshd__password_authentication [[[
@@ -242,13 +242,13 @@ sshd__max_sessions: '10'
 # Maximum number of unauthenticated connections (3), after which there's 80%
 # probability of next unauthenticated connection to be dropped, finishing at 7,
 # after which all new unauthenticated connections will be refused.
-sshd__max_startups: '3:80:7'
+sshd__max_startups: '10:30:60'
 
                                                                    # ]]]
 # .. envvar:: sshd__login_grace_time [[[
 #
 # Time after which unauthenticated sessions are disconnected.
-sshd__login_grace_time: '30s'
+sshd__login_grace_time: '30'
 
                                                                    # ]]]
 # .. envvar:: sshd__client_alive_count_max [[[

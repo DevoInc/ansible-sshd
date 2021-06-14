@@ -80,6 +80,7 @@ ClientAliveCountMax {{ sshd__client_alive_count_max }}
 # Authentication:
 PermitRootLogin {{ sshd__permit_root_login }}
 StrictModes yes
+PermitUserEnvironment no
 
 {% if sshd__register_version.stdout is version_compare('7.4', '<') %}
 RSAAuthentication yes
@@ -136,6 +137,8 @@ PrintLastLog yes
 TCPKeepAlive yes
 Compression {{ sshd__compression }}
 #UseLogin no
+ClientAliveInterval 300
+ClientAliveCountMax 3
 
 Banner {{ sshd__banner }}
 

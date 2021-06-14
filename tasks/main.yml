@@ -109,7 +109,7 @@
     dest:   '/etc/ssh/sshd_config'
     owner:  'root'
     group:  'root'
-    mode:   '0644'
+    mode:   '0600'
   notify: [ 'Test sshd configuration and restart' ]
   tags: [ 'role::sshd:config' ]
 
@@ -178,6 +178,37 @@
   setup:
     filter: ansible_local
   when: sshd__register_fact_script is changed
+
+- name: Ensure local login warning banner is configured properly
+  template:
+    src: files/templates/issue.j2
+    dest: /etc/issue
+    owner: root
+    group: root
+    mode: "u-x,go-wx"
+
+- name: Ensure remote login warning banner is configured properly
+  template:
+    src: files/templates/issue.net.j2
+    dest: /etc/issue.net
+    owner: root
+    group: root
+    mode: "u-x,go-wx"
+
+- name: Ensure SSH warning banner is configured
+  lineinfile:
+    state: present
+    dest: /etc/ssh/sshd_config
+    regexp: "^Banner"
+    line: "Banner /etc/issue.net"
+
+- name: Ensure message of the day is configured properly
+  template:
+    src: files/templates/motd.j2
+    dest: /etc/motd
+    owner: root
+    group: root
+    mode: "u-x,go-wx"
 
 - name: Post hooks
   include: '{{ lookup("task_src", "sshd/post_main.yml") }}'
