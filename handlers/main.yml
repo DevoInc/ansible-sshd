@@ -5,6 +5,8 @@
   notify: [ 'Restart sshd' ]
 
 - name: Restart sshd
+  vars:
+    ssh_package: "{{ 'ssh' if ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu' else 'sshd' }}"
   service:
-    name: 'ssh'
+    name: "{{ ssh_package }}"
     state: 'restarted'
